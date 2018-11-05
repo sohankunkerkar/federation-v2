@@ -242,6 +242,7 @@ func (cc *ClusterController) updateClusterStatus() error {
 		cc.clusterStatusMap[cluster.Name] = *clusterStatusNew
 		cc.mu.Unlock()
 		cluster.Status = *clusterStatusNew
+		cluster.Status.ObservedGeneration = cluster.Generation
 		_, err = cc.fedClient.CoreV1alpha1().FederatedClusters(cc.fedNamespace).UpdateStatus(&cluster)
 		if err != nil {
 			glog.Warningf("Failed to update the status of cluster: %v, error is : %v", cluster.Name, err)
