@@ -163,6 +163,14 @@ func (c *Controller) reconcile(qualifiedName util.QualifiedName) util.Reconcilia
 	limitedScope := c.targetNamespace != metav1.NamespaceAll
 	if limitedScope && enabled && !typeConfig.GetNamespaced() {
 		glog.Infof("Skipping start of sync controller for cluster-scoped resource %q.  It is not required for a namespaced federation control plane.", typeConfig.GetTemplate().Kind)
+
+		typeConfig.Status.ObservedGeneration = typeConfig.Generation
+
+		_, err = c.client.FederatedTypeConfigs(typeConfig.Namespace).UpdateStatus(typeConfig)
+		if err != nil {
+
+			runtime.HandleError(fmt.Errorf("Could not update ObservedGeneration of the CRD: %q: %v", key, err))
+		}
 		return util.StatusAllOK
 	}
 
