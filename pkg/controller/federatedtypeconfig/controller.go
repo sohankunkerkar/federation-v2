@@ -181,6 +181,9 @@ func (c *Controller) reconcile(qualifiedName util.QualifiedName) util.Reconcilia
 		if running {
 			c.stopController(typeConfig.Name, stopChan)
 		}
+		
+		typeConfig.Status.ObservedGeneration = typeConfig.Generation
+		
 		err := c.removeFinalizer(typeConfig)
 		if err != nil {
 			runtime.HandleError(fmt.Errorf("Failed to remove finalizer from FederatedTypeConfig %q: %v", key, err))
@@ -188,6 +191,8 @@ func (c *Controller) reconcile(qualifiedName util.QualifiedName) util.Reconcilia
 		}
 		return util.StatusAllOK
 	}
+	
+	typeConfig.Status.ObservedGeneration = typeConfig.Generation
 
 	err = c.ensureFinalizer(typeConfig)
 	if err != nil {
@@ -265,7 +270,7 @@ func (c *Controller) ensureFinalizer(tc *corev1a1.FederatedTypeConfig) error {
 	}
 	finalizers.Insert(finalizer)
 	accessor.SetFinalizers(finalizers.List())
-	_, err = c.client.FederatedTypeConfigs(tc.Namespace).Update(tc)
+	_, err = c.client.FederatedTypeConfigs(tc.Namespace).UpdateStatus(tc)
 	return err
 }
 
@@ -280,6 +285,6 @@ func (c *Controller) removeFinalizer(tc *corev1a1.FederatedTypeConfig) error {
 	}
 	finalizers.Delete(finalizer)
 	accessor.SetFinalizers(finalizers.List())
-	_, err = c.client.FederatedTypeConfigs(tc.Namespace).Update(tc)
+	_, err = c.client.FederatedTypeConfigs(tc.Namespace).UpdateStatus(tc)
 	return err
 }
