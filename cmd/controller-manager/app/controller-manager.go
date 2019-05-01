@@ -94,6 +94,11 @@ member clusters and does the necessary reconciliation`,
 	return cmd
 }
 
+// TODO(sohankunkerkar) Remove when no longer necessary.
+// This Environment variable is a temporary addition to support Red Hat's downstream testing efforts.
+// Its continued existence should not be relied upon.
+const defaultScopeEnv = "DEFAULT_FEDERATION_SCOPE"
+
 // Run runs the controller-manager with options. This should never exit.
 func Run(opts *options.Options) error {
 	logs.InitLogs()
@@ -249,6 +254,16 @@ func setInt(target *int, defaultValue int) {
 
 func setDefaultFederationConfig(fedConfig *corev1a1.FederationConfig) {
 	spec := &fedConfig.Spec
+
+	if len(spec.Scope) == 0 {
+		defaultValue := os.Getenv(defaultScopeEnv)
+		if len(defaultValue) != 0 {
+			if defaultValue != string(apiextv1b1.ClusterScoped) && defaultValue != string(apiextv1b1.NamespaceScoped) {
+				glog.Fatalf("DefaultScope must be Cluster or Namespaced; got %q", defaultValue)
+				spec.Scope = apiextv1b1.ResourceScope(defaultValue)
+			}
+		}
+	}
 	if spec.Scope == apiextv1b1.NamespaceScoped {
 		setString(&spec.RegistryNamespace, fedConfig.Namespace)
 	} else {
@@ -306,19 +321,19 @@ func setOptionsByFederationConfig(opts *options.Options) {
 	fedConfig := getFederationConfig(opts)
 	if fedConfig == nil {
 		// FederationConfig could not be sourced from --federation-config or from the API.
-		// create a new `FederationConfig` with default values.
-		fedConfig = &corev1a1.FederationConfig{
-			ObjectMeta: metav1.ObjectMeta{
-				Name:      util.FederationConfigName,
-				Namespace: opts.Config.FederationNamespace,
-			},
+		qualifiedName := util.QualifiedName{
+			Namespace: opts.Config.FederationNamespace,
+			Name:      util.FederationConfigName,
 		}
 
-		qualifiedName := util.QualifiedName{
-			Namespace: fedConfig.Namespace,
-			Name:      fedConfig.Name,
-		}
 		glog.Infof("Creating FederationConfig %q with default values", qualifiedName)
+
+		fedConfig = &corev1a1.FederationConfig{
+			ObjectMeta: metav1.ObjectMeta{
+				Name:      qualifiedName.Name,
+				Namespace: qualifiedName.Namespace,
+			},
+		}
 	}
 
 	setDefaultFederationConfig(fedConfig)
