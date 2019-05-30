@@ -246,11 +246,11 @@ associated with this target API type to `false`, which will prompt the sync
 controller for the target API type to be stopped.
 
 If the goal is to permanently disable federation of the target API type, passing the
-`--delete-from-api` flag will remove the `FederatedTypeConfig` and federated type CRD created by
+`--delete-crd` flag will remove the `FederatedTypeConfig` and federated type CRD created by
 `enable`:
 
 ```bash
-kubefedctl disable <FederatedTypeConfig Name> --delete-from-api
+kubefedctl disable <FederatedTypeConfig Name> --delete-crd
 ```
 
 **WARNING: All custom resources for the type will be removed by this command.**
