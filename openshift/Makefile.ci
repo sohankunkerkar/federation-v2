@@ -1,6 +1,6 @@
 # Makefile.ci holds make directives called by the CI jobs for this repo.
 TARGET = kubefed
-GOTARGET = sigs.k8s.io/$(TARGET)
+GOTARGET = $(GOPATH)/src/sigs.k8s.io/$(TARGET)
 TESTARGS ?= $(VERBOSE_FLAG) -timeout 60s
 TEST_PKGS ?= $(GOTARGET)/cmd/... $(GOTARGET)/pkg/...
 TEST_CMD = go test $(TESTARGS)
