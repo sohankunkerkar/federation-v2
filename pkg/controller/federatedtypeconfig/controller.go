@@ -31,11 +31,11 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
 
-	corev1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	genericclient "sigs.k8s.io/kubefed/pkg/client/generic"
-	statuscontroller "sigs.k8s.io/kubefed/pkg/controller/status"
-	synccontroller "sigs.k8s.io/kubefed/pkg/controller/sync"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	corev1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	genericclient "github.com/openshift/kubefed/pkg/client/generic"
+	statuscontroller "github.com/openshift/kubefed/pkg/controller/status"
+	synccontroller "github.com/openshift/kubefed/pkg/controller/sync"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 const finalizer string = "core.kubefed.k8s.io/federated-type-config"

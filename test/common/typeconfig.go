@@ -19,9 +19,9 @@ package common
 import (
 	"context"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	client "sigs.k8s.io/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	client "github.com/openshift/kubefed/pkg/client/generic"
 )
 
 func GetTypeConfig(genericClient client.Client, name, namespace string) (typeconfig.Interface, error) {

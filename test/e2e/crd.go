@@ -31,13 +31,13 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/rest"
 
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl"
-	kfenable "sigs.k8s.io/kubefed/pkg/kubefedctl/enable"
-	kfenableopts "sigs.k8s.io/kubefed/pkg/kubefedctl/options"
-	"sigs.k8s.io/kubefed/test/common"
-	"sigs.k8s.io/kubefed/test/e2e/framework"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/kubefedctl"
+	kfenable "github.com/openshift/kubefed/pkg/kubefedctl/enable"
+	kfenableopts "github.com/openshift/kubefed/pkg/kubefedctl/options"
+	"github.com/openshift/kubefed/test/common"
+	"github.com/openshift/kubefed/test/e2e/framework"
 
 	. "github.com/onsi/ginkgo"
 )

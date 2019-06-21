@@ -26,9 +26,9 @@ import (
 	apiserverflag "k8s.io/apiserver/pkg/util/flag"
 	"k8s.io/client-go/tools/clientcmd"
 
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/enable"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/federate"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/util"
+	"github.com/openshift/kubefed/pkg/kubefedctl/enable"
+	"github.com/openshift/kubefed/pkg/kubefedctl/federate"
+	"github.com/openshift/kubefed/pkg/kubefedctl/util"
 )
 
 // NewKubeFedCtlCommand creates the `kubefedctl` command and its nested children.
@@ -37,7 +37,7 @@ func NewKubeFedCtlCommand(out io.Writer) *cobra.Command {
 	rootCmd := &cobra.Command{
 		Use:   "kubefedctl",
 		Short: "kubefedctl controls a Kubernetes Cluster Federation",
-		Long:  "kubefedctl controls a Kubernetes Cluster Federation. Find more information at https://sigs.k8s.io/kubefed.",
+		Long:  "kubefedctl controls a Kubernetes Cluster Federation. Find more information at https://github.com/openshift/kubefed.",
 
 		RunE: runHelp,
 	}

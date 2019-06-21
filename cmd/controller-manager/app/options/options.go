@@ -22,7 +22,7 @@ import (
 
 	apiextv1b1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 // Options contains everything necessary to create and run controller-manager.

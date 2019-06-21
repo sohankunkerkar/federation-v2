@@ -25,8 +25,8 @@ import (
 	"k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/pkg/controller/sync/status"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/controller/sync/status"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 const eventTemplate = "%s %s %q in cluster %q"

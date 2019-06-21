@@ -24,8 +24,8 @@ import (
 	valutil "k8s.io/apimachinery/pkg/util/validation"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	"sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	"github.com/openshift/kubefed/pkg/apis/core/v1beta1"
 )
 
 func ValidateFederatedTypeConfig(obj *v1beta1.FederatedTypeConfig, statusSubResource bool) field.ErrorList {

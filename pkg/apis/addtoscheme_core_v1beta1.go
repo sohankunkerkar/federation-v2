@@ -17,7 +17,7 @@ limitations under the License.
 package apis
 
 import (
-	"sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/apis/core/v1beta1"
 )
 
 func init() {

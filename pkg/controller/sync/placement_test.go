@@ -24,8 +24,8 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/util/sets"
 
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 func TestSelectedClusterNames(t *testing.T) {

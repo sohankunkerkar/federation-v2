@@ -29,10 +29,10 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
 
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	genericclient "sigs.k8s.io/kubefed/pkg/client/generic"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/features"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	genericclient "github.com/openshift/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/features"
 )
 
 // ClusterData stores cluster client and previous health check probe results of individual cluster.

@@ -29,7 +29,7 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"sigs.k8s.io/controller-runtime/pkg/client/apiutil"
 
-	"sigs.k8s.io/kubefed/pkg/client/generic/scheme"
+	"github.com/openshift/kubefed/pkg/client/generic/scheme"
 )
 
 func NewGenericInformer(config *rest.Config, namespace string, obj pkgruntime.Object, resyncPeriod time.Duration, triggerFunc func(pkgruntime.Object)) (cache.Store, cache.Controller, error) {

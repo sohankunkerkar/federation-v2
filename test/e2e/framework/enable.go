@@ -23,8 +23,8 @@ import (
 	"runtime"
 	"strings"
 
-	kfenable "sigs.k8s.io/kubefed/pkg/kubefedctl/enable"
-	"sigs.k8s.io/kubefed/test/common"
+	kfenable "github.com/openshift/kubefed/pkg/kubefedctl/enable"
+	"github.com/openshift/kubefed/test/common"
 )
 
 func LoadEnableTypeDirectives(tl common.TestLogger) []*kfenable.EnableTypeDirective {

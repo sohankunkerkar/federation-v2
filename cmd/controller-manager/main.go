@@ -24,7 +24,7 @@ import (
 	"k8s.io/apiserver/pkg/util/logs"
 	_ "k8s.io/client-go/plugin/pkg/client/auth" // Load all client auth plugins for GCP, Azure, Openstack, etc
 
-	"sigs.k8s.io/kubefed/cmd/controller-manager/app"
+	"github.com/openshift/kubefed/cmd/controller-manager/app"
 )
 
 // Controller-manager main.

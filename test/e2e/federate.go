@@ -32,13 +32,13 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 	restclient "k8s.io/client-go/rest"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	genericclient "sigs.k8s.io/kubefed/pkg/client/generic"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/federate"
-	"sigs.k8s.io/kubefed/test/common"
-	"sigs.k8s.io/kubefed/test/e2e/framework"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	genericclient "github.com/openshift/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/kubefedctl/federate"
+	"github.com/openshift/kubefed/test/common"
+	"github.com/openshift/kubefed/test/e2e/framework"
 
 	. "github.com/onsi/ginkgo"
 )

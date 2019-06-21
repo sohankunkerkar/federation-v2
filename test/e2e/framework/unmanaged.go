@@ -32,11 +32,11 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	genericclient "sigs.k8s.io/kubefed/pkg/client/generic"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/test/common"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	genericclient "github.com/openshift/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/test/common"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

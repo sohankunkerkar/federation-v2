@@ -28,8 +28,8 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/apis/core/v1beta1/validation"
+	"github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/apis/core/v1beta1/validation"
 )
 
 type KubeFedClusterValidationHook struct {

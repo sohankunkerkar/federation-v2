@@ -24,10 +24,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	"sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/enable"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/options"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	"github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/kubefedctl/enable"
+	"github.com/openshift/kubefed/pkg/kubefedctl/options"
 )
 
 func TestValidateFederatedTypeConfig(t *testing.T) {

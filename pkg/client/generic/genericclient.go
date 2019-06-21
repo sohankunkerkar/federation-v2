@@ -24,7 +24,7 @@ import (
 	"k8s.io/client-go/rest"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"sigs.k8s.io/kubefed/pkg/client/generic/scheme"
+	"github.com/openshift/kubefed/pkg/client/generic/scheme"
 )
 
 type Client interface {

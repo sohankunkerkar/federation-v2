@@ -24,10 +24,10 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
 
-	corev1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/controller/schedulingpreference"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/schedulingtypes"
+	corev1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/controller/schedulingpreference"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/schedulingtypes"
 )
 
 type SchedulingManager struct {

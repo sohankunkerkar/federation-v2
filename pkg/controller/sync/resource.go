@@ -31,11 +31,11 @@ import (
 	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/client-go/tools/record"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/controller/sync/dispatch"
-	"sigs.k8s.io/kubefed/pkg/controller/sync/version"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/controller/sync/dispatch"
+	"github.com/openshift/kubefed/pkg/controller/sync/version"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 // FederatedResource encapsulates the behavior of a logical federated

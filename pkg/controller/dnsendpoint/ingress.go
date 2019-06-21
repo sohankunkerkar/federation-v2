@@ -21,8 +21,8 @@ import (
 
 	restclient "k8s.io/client-go/rest"
 
-	feddnsv1a1 "sigs.k8s.io/kubefed/pkg/apis/multiclusterdns/v1alpha1"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	feddnsv1a1 "github.com/openshift/kubefed/pkg/apis/multiclusterdns/v1alpha1"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 func StartIngressDNSEndpointController(config *util.ControllerConfig, stopChan <-chan struct{}) error {

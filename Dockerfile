@@ -17,7 +17,7 @@ WORKDIR /go/src/github.com/openshift/kubefed
 
 RUN find . -name "*.go" -exec sed -i -r "s/sigs.k8s.io\/kubefed/github.com\/openshift\/kubefed/g"  {} \;
 
-RUN sed -i  "s/^sigs.k8s.io/github.com\/openshift/g" Makefile 
+RUN sed -i "s/sigs.k8s.io/github.com\/openshift/g" Makefile 
 
 
 RUN DOCKER_BUILD="/bin/sh -c " make hyperfed

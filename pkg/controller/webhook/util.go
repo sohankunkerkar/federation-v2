@@ -20,7 +20,7 @@ import (
 	admissionv1beta1 "k8s.io/api/admission/v1beta1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/apis/core/v1beta1"
 )
 
 var (

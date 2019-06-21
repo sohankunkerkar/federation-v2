@@ -33,9 +33,9 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/klog"
 
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/schedulingtypes"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/schedulingtypes"
 )
 
 const (

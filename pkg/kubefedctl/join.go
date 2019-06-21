@@ -38,11 +38,11 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/klog"
 
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	genericclient "sigs.k8s.io/kubefed/pkg/client/generic"
-	ctlutil "sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/options"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/util"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	genericclient "github.com/openshift/kubefed/pkg/client/generic"
+	ctlutil "github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/kubefedctl/options"
+	"github.com/openshift/kubefed/pkg/kubefedctl/util"
 )
 
 const (

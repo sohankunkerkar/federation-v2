@@ -17,7 +17,7 @@ limitations under the License.
 package framework
 
 import (
-	"sigs.k8s.io/kubefed/test/common"
+	"github.com/openshift/kubefed/test/common"
 )
 
 type e2eLogger struct{}

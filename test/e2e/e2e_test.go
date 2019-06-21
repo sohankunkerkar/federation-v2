@@ -21,7 +21,7 @@ import (
 
 	_ "k8s.io/client-go/plugin/pkg/client/auth" // Load all client auth plugins for GCP, Azure, etc
 
-	"sigs.k8s.io/kubefed/test/e2e/framework"
+	"github.com/openshift/kubefed/test/e2e/framework"
 )
 
 func init() {

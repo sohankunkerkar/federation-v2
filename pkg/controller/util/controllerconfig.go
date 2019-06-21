@@ -22,7 +22,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	restclient "k8s.io/client-go/rest"
 
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
 )
 
 // LeaderElectionConfiguration defines the configuration of leader election

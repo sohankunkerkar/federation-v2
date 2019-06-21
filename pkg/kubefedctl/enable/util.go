@@ -31,8 +31,8 @@ import (
 	"k8s.io/client-go/discovery"
 	"k8s.io/client-go/rest"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/common"
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
+	"github.com/openshift/kubefed/pkg/apis/core/common"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
 )
 
 func DecodeYAMLFromFile(filename string, obj interface{}) error {

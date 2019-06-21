@@ -23,7 +23,7 @@ import (
 	apiextv1b1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/common"
+	"github.com/openshift/kubefed/pkg/apis/core/common"
 )
 
 // FederatedTypeConfigSpec defines the desired state of FederatedTypeConfig.

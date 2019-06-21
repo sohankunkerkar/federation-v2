@@ -21,8 +21,8 @@ import (
 
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/test/e2e/framework"
-	"sigs.k8s.io/kubefed/test/e2e/framework/ginkgowrapper"
+	"github.com/openshift/kubefed/test/e2e/framework"
+	"github.com/openshift/kubefed/test/e2e/framework/ginkgowrapper"
 
 	"github.com/onsi/ginkgo"
 	"github.com/onsi/ginkgo/config"

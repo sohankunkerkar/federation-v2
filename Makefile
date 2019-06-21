@@ -14,7 +14,7 @@
 
 SHELL := /bin/bash
 TARGET = kubefed
-GOTARGET = sigs.k8s.io/$(TARGET)
+GOTARGET = github.com/openshift/$(TARGET)
 REGISTRY ?= quay.io/kubernetes-multicluster
 IMAGE = $(REGISTRY)/$(TARGET)
 DIR := ${CURDIR}
@@ -49,10 +49,10 @@ CONTROLLER_TARGET = bin/controller-manager
 KUBEFEDCTL_TARGET = bin/kubefedctl
 WEBHOOK_TARGET = bin/webhook
 
-LDFLAG_OPTIONS = -ldflags "-X sigs.k8s.io/kubefed/pkg/version.version=$(GIT_VERSION) \
-                      -X sigs.k8s.io/kubefed/pkg/version.gitCommit=$(GIT_HASH) \
-                      -X sigs.k8s.io/kubefed/pkg/version.gitTreeState=$(GIT_TREESTATE) \
-                      -X sigs.k8s.io/kubefed/pkg/version.buildDate=$(BUILDDATE)"
+LDFLAG_OPTIONS = -ldflags "-X github.com/openshift/kubefed/pkg/version.version=$(GIT_VERSION) \
+                      -X github.com/openshift/kubefed/pkg/version.gitCommit=$(GIT_HASH) \
+                      -X github.com/openshift/kubefed/pkg/version.gitTreeState=$(GIT_TREESTATE) \
+                      -X github.com/openshift/kubefed/pkg/version.buildDate=$(BUILDDATE)"
 
 GO_BUILDCMD = CGO_ENABLED=0 go build $(VERBOSE_FLAG) $(LDFLAG_OPTIONS)
 

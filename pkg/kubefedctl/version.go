@@ -22,7 +22,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"sigs.k8s.io/kubefed/pkg/version"
+	"github.com/openshift/kubefed/pkg/version"
 )
 
 var (

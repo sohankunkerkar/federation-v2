@@ -23,8 +23,8 @@ import (
 	"github.com/openshift/generic-admission-server/pkg/cmd/server"
 	"github.com/spf13/cobra"
 
-	"sigs.k8s.io/kubefed/pkg/controller/webhook"
-	"sigs.k8s.io/kubefed/pkg/controller/webhook/federatedtypeconfig"
+	"github.com/openshift/kubefed/pkg/controller/webhook"
+	"github.com/openshift/kubefed/pkg/controller/webhook/federatedtypeconfig"
 )
 
 func NewWebhookCommand(stopChan <-chan struct{}) *cobra.Command {

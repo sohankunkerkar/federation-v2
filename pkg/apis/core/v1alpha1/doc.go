@@ -17,7 +17,7 @@ limitations under the License.
 // Package v1alpha1 contains API Schema definitions for the core v1alpha1 API group
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=package,register
-// +k8s:conversion-gen=sigs.k8s.io/kubefed/pkg/apis/core
+// +k8s:conversion-gen=github.com/openshift/kubefed/pkg/apis/core
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=core.kubefed.k8s.io
 package v1alpha1

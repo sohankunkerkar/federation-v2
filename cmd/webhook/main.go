@@ -23,7 +23,7 @@ import (
 	"k8s.io/apiserver/pkg/util/logs"
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/pkg/webhook"
+	"github.com/openshift/kubefed/pkg/webhook"
 )
 
 func main() {

@@ -19,17 +19,17 @@ package framework
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	"sigs.k8s.io/kubefed/pkg/controller/dnsendpoint"
-	"sigs.k8s.io/kubefed/pkg/controller/federatedtypeconfig"
-	"sigs.k8s.io/kubefed/pkg/controller/ingressdns"
-	"sigs.k8s.io/kubefed/pkg/controller/kubefedcluster"
-	"sigs.k8s.io/kubefed/pkg/controller/schedulingmanager"
-	"sigs.k8s.io/kubefed/pkg/controller/servicedns"
-	"sigs.k8s.io/kubefed/pkg/controller/status"
-	"sigs.k8s.io/kubefed/pkg/controller/sync"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/test/common"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	"github.com/openshift/kubefed/pkg/controller/dnsendpoint"
+	"github.com/openshift/kubefed/pkg/controller/federatedtypeconfig"
+	"github.com/openshift/kubefed/pkg/controller/ingressdns"
+	"github.com/openshift/kubefed/pkg/controller/kubefedcluster"
+	"github.com/openshift/kubefed/pkg/controller/schedulingmanager"
+	"github.com/openshift/kubefed/pkg/controller/servicedns"
+	"github.com/openshift/kubefed/pkg/controller/status"
+	"github.com/openshift/kubefed/pkg/controller/sync"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/test/common"
 )
 
 // ControllerFixture manages a KubeFed controller for testing.

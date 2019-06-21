@@ -34,10 +34,10 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/common"
-	fedv1a1 "sigs.k8s.io/kubefed/pkg/apis/core/v1alpha1"
-	"sigs.k8s.io/kubefed/pkg/client/generic"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/apis/core/common"
+	fedv1a1 "github.com/openshift/kubefed/pkg/apis/core/v1alpha1"
+	"github.com/openshift/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 // VersionedResource defines the methods a federated resource must

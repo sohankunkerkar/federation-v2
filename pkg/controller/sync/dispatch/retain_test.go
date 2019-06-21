@@ -21,7 +21,7 @@ import (
 
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 func TestRetainClusterFields(t *testing.T) {

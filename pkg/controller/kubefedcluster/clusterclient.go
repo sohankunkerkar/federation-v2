@@ -30,10 +30,10 @@ import (
 	restclient "k8s.io/client-go/rest"
 	"k8s.io/klog"
 
-	fedcommon "sigs.k8s.io/kubefed/pkg/apis/core/common"
-	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
-	"sigs.k8s.io/kubefed/pkg/client/generic"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	fedcommon "github.com/openshift/kubefed/pkg/apis/core/common"
+	fedv1b1 "github.com/openshift/kubefed/pkg/apis/core/v1beta1"
+	"github.com/openshift/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 const (

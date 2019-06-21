@@ -28,8 +28,8 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/util/sets"
 
-	"sigs.k8s.io/kubefed/pkg/controller/sync/status"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/controller/sync/status"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 // FederatedResourceForDispatch is the subset of the FederatedResource

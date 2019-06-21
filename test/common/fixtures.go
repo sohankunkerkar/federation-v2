@@ -25,7 +25,7 @@ import (
 
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 
-	kfenable "sigs.k8s.io/kubefed/pkg/kubefedctl/enable"
+	kfenable "github.com/openshift/kubefed/pkg/kubefedctl/enable"
 )
 
 var fixtures map[string]*unstructured.Unstructured

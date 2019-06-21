@@ -31,7 +31,7 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/cmd/controller-manager/app/options"
+	"github.com/openshift/kubefed/cmd/controller-manager/app/options"
 )
 
 func NewKubeFedLeaderElector(opts *options.Options, fnStartControllers func(*options.Options, <-chan struct{})) (*leaderelection.LeaderElector, error) {

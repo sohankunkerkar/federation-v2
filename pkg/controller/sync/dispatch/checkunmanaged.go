@@ -25,7 +25,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/klog"
 
-	"sigs.k8s.io/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/controller/util"
 )
 
 type isNamespaceInHostClusterFunc func(clusterObj pkgruntime.Object) bool

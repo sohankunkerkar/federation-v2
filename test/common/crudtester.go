@@ -33,15 +33,15 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/rest"
 
-	"sigs.k8s.io/kubefed/pkg/apis/core/common"
-	"sigs.k8s.io/kubefed/pkg/apis/core/typeconfig"
-	fedv1a1 "sigs.k8s.io/kubefed/pkg/apis/core/v1alpha1"
-	genericclient "sigs.k8s.io/kubefed/pkg/client/generic"
-	"sigs.k8s.io/kubefed/pkg/controller/sync"
-	"sigs.k8s.io/kubefed/pkg/controller/sync/status"
-	versionmanager "sigs.k8s.io/kubefed/pkg/controller/sync/version"
-	"sigs.k8s.io/kubefed/pkg/controller/util"
-	"sigs.k8s.io/kubefed/pkg/kubefedctl/federate"
+	"github.com/openshift/kubefed/pkg/apis/core/common"
+	"github.com/openshift/kubefed/pkg/apis/core/typeconfig"
+	fedv1a1 "github.com/openshift/kubefed/pkg/apis/core/v1alpha1"
+	genericclient "github.com/openshift/kubefed/pkg/client/generic"
+	"github.com/openshift/kubefed/pkg/controller/sync"
+	"github.com/openshift/kubefed/pkg/controller/sync/status"
+	versionmanager "github.com/openshift/kubefed/pkg/controller/sync/version"
+	"github.com/openshift/kubefed/pkg/controller/util"
+	"github.com/openshift/kubefed/pkg/kubefedctl/federate"
 )
 
 // FederatedTypeCrudTester exercises Create/Read/Update/Delete
