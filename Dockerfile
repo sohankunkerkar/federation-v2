@@ -13,10 +13,6 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 WORKDIR /go/src/sigs.k8s.io/kubefed
 
-# copy in git info to support recording version in binaries
-COPY .git/HEAD .git/HEAD
-COPY .git/refs/heads/. .git/refs/heads
-RUN mkdir -p .git/objects
 
 COPY Makefile Makefile
 COPY pkg pkg
@@ -40,7 +36,6 @@ RUN ln -s hyperfed controller-manager && ln -s hyperfed kubefedctl &&  ln -s hyp
 USER ${USER_ID}
 
 ENTRYPOINT ["/root/controller-manager"]
-CMD ["--install-crds=false"]
 
 # apply labels to final image
 LABEL io.k8s.display-name="OpenShift KubeFed" \
