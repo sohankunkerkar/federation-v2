@@ -58,6 +58,7 @@ GO_BUILDCMD = CGO_ENABLED=0 go build $(VERBOSE_FLAG) $(LDFLAG_OPTIONS)
 
 TESTARGS ?= $(VERBOSE_FLAG) -timeout 60s
 TEST_PKGS ?= $(GOTARGET)/cmd/... $(GOTARGET)/pkg/...
+TEST_BINARY_PKGS ?= $(GOTARGET)/test/e2e/
 TEST_CMD = go test $(TESTARGS)
 TEST = $(TEST_CMD) $(TEST_PKGS)
 
@@ -84,6 +85,9 @@ container: $(HYPERFED_TARGET)-linux
 	cp -f $(HYPERFED_TARGET)-linux images/kubefed/hyperfed
 	$(DOCKER) build images/kubefed -t $(IMAGE_NAME)
 	rm -f images/kubefed/hyperfed
+
+e2e:
+	go test -c -o $(BIN_DIR)/e2e.test $(TEST_BINARY_PKGS)
 
 bindir:
 	mkdir -p $(BIN_DIR)
