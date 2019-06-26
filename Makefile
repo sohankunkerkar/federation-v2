@@ -39,6 +39,7 @@ endif
 ifneq ($(VERBOSE),)
 VERBOSE_FLAG = -v
 endif
+COMPILE_FLAG = -c
 BUILDMNT = /go/src/$(GOTARGET)
 # The version here should match the version of go configured in
 # .travis.yml
@@ -48,6 +49,7 @@ HYPERFED_TARGET = bin/hyperfed
 CONTROLLER_TARGET = bin/controller-manager
 KUBEFEDCTL_TARGET = bin/kubefedctl
 WEBHOOK_TARGET = bin/webhook
+E2E_BINARY_TARGET = bin/e2e
 
 LDFLAG_OPTIONS = -ldflags "-X sigs.k8s.io/kubefed/pkg/version.version=$(GIT_VERSION) \
                       -X sigs.k8s.io/kubefed/pkg/version.gitCommit=$(GIT_HASH) \
@@ -56,18 +58,20 @@ LDFLAG_OPTIONS = -ldflags "-X sigs.k8s.io/kubefed/pkg/version.version=$(GIT_VERS
 
 GO_BUILDCMD = CGO_ENABLED=0 go build $(VERBOSE_FLAG) $(LDFLAG_OPTIONS)
 
+GO_TESTCMD  = CGO_ENABLED=0 go test $(COMPILE_FLAG) $(LDFLAG_OPTIONS)
+
 TESTARGS ?= $(VERBOSE_FLAG) -timeout 60s
 TEST_PKGS ?= $(GOTARGET)/cmd/... $(GOTARGET)/pkg/...
-TEST_BINARY_PKGS ?= $(GOTARGET)/test/e2e/
+TEST_BINARY_PKGS ?= $(GOTARGET)/test/e2e
 TEST_CMD = go test $(TESTARGS)
 TEST = $(TEST_CMD) $(TEST_PKGS)
 
 DOCKER_BUILD ?= $(DOCKER) run --rm -v $(DIR):$(BUILDMNT) -w $(BUILDMNT) $(BUILD_IMAGE) /bin/sh -c
 
 # TODO (irfanurrehman): can add local compile, and auto-generate targets also if needed
-.PHONY: all container push clean hyperfed controller kubefedctl test local-test vet fmt build bindir generate webhook
+.PHONY: all container push clean hyperfed controller kubefedctl test local-test vet fmt build bindir generate webhook e2e
 
-all: container hyperfed controller kubefedctl webhook
+all: container hyperfed controller kubefedctl webhook e2e
 
 # Unit tests
 test: vet
@@ -86,9 +90,6 @@ container: $(HYPERFED_TARGET)-linux
 	$(DOCKER) build images/kubefed -t $(IMAGE_NAME)
 	rm -f images/kubefed/hyperfed
 
-e2e:
-	go test -c -o $(BIN_DIR)/e2e.test $(TEST_BINARY_PKGS)
-
 bindir:
 	mkdir -p $(BIN_DIR)
 
@@ -101,14 +102,26 @@ $(1)-$(2): bindir
 	$(DOCKER_BUILD) 'GOARCH=amd64 GOOS=$(2) $(GO_BUILDCMD) -o $(1)-$(2) cmd/$(3)/main.go'
 ALL_BINS := $(ALL_BINS) $(1)-$(2)
 endef
+
+define BINARY_template
+$(1)-$(2): bindir
+	$(DOCKER_BUILD) 'GOARCH=amd64 GOOS=$(2) $(GO_TESTCMD) -o $(1)-$(2) ./test/$(3)'
+ALL_BINS := $(ALL_BINS) $(1)-$(2)
+endef
+
 $(foreach cmd, $(COMMANDS), $(foreach os, $(OSES), $(eval $(call OS_template, $(cmd),$(os),$(notdir $(cmd))))))
+
+$(foreach os, $(OSES), $(eval $(call BINARY_template, $(E2E_BINARY_TARGET),$(os),$(notdir $(E2E_BINARY_TARGET)))))
 
 define CMD_template
 $(1): $(1)-$(HOST_OS)
 	ln -sf $(notdir $(1)-$(HOST_OS)) $(1)
 ALL_BINS := $(ALL_BINS) $(1)
 endef
+
 $(foreach cmd, $(COMMANDS), $(eval $(call CMD_template,$(cmd))))
+
+$(eval $(call CMD_template,$(E2E_BINARY_TARGET)))
 
 hyperfed: $(HYPERFED_TARGET)
 
@@ -117,6 +130,8 @@ controller: $(CONTROLLER_TARGET)
 kubefedctl: $(KUBEFEDCTL_TARGET)
 
 webhook: $(WEBHOOK_TARGET)
+
+e2e: $(E2E_BINARY_TARGET)
 
 # Generate code
 generate-code:
