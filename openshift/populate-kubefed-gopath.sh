@@ -8,7 +8,7 @@
 dir=$(realpath "$(dirname "${BASH_SOURCE}")/..")
 gopath_dir="${GOPATH_DIR:-"/go"}"
 
-kubefed_gp=github.com/sigs.k8s.io/kubefed
+kubefed_gp=sigs.k8s.io/kubefed
 kubefed_src="${gopath_dir}/src/${kubefed_gp}"
 
 echo "Populating kubefed gopath at ${kubefed_src}"

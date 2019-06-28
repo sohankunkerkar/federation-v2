@@ -15,9 +15,9 @@ vet:
 	go vet $(TEST_PKGS)
 
 managed-e2e: populate-kubefed-gopath
-	cd /go/src/github.com/sigs.k8s.io/kubefed
+	cd /go/src/sigs.k8s.io/kubefed
 	./scripts/downloads-binaries.sh
-	TEST_ASSET_PATH="/go/src/github.com/sigs.k8s.io/kubefed/bin" \
-	TEST_ASSET_ETCD="/go/src/github.com/sigs.k8s.io/kubefed/bin/etcd" \
-	TEST_ASSET_KUBE_APISERVER="/go/src/github.com/sigs.k8s.io/kubefed/bin/kube-apiserver" \
-	./e2e -args -ginkgo.v -single-call-timeout=1m -ginkgo.trace -ginkgo.randomizeAllSpecs
+	TEST_ASSET_PATH="/go/src/sigs.k8s.io/kubefed/bin" \
+	TEST_ASSET_ETCD="/go/src/sigs.k8s.io/kubefed/bin/etcd" \
+	TEST_ASSET_KUBE_APISERVER="/go/src/sigs.k8s.io/kubefed/bin/kube-apiserver" \
+	go test -v ./test/e2e -args -ginkgo.v -single-call-timeout=1m -ginkgo.trace -ginkgo.randomizeAllSpecs

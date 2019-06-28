@@ -27,7 +27,7 @@ FROM registry.svc.ci.openshift.org/openshift/origin-v4.0:base
 
 ENV USER_ID=1001
 
-# copy in binaries 
+# copy in binaries
 WORKDIR /root/
 COPY --from=builder /go/src/sigs.k8s.io/kubefed/bin/e2e-linux e2e
 COPY --from=builder /go/src/sigs.k8s.io/kubefed/bin/hyperfed-linux hyperfed
