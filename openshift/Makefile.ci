@@ -6,19 +6,13 @@ TEST_PKGS ?= $(GOTARGET)/cmd/... $(GOTARGET)/pkg/...
 TEST_CMD = go test $(TESTARGS)
 TEST = $(TEST_CMD) $(TEST_PKGS)
 
-populate-kubefed-gopath:
-	./openshift/populate-kubefed-gopath.sh
 unit:
 	$(TEST)
 
 vet:
 	go vet $(TEST_PKGS)
 
-managed-e2e: populate-kubefed-gopath
-	cd /go/src/sigs.k8s.io/kubefed
-	ls -ltr
-	bash -x ./scripts/downloads-binaries.sh
-	TEST_ASSET_PATH="/go/src/sigs.k8s.io/kubefed/bin" \
-	TEST_ASSET_ETCD="/go/src/sigs.k8s.io/kubefed/bin/etcd" \
-	TEST_ASSET_KUBE_APISERVER="/go/src/sigs.k8s.io/kubefed/bin/kube-apiserver" \
-	go test -v ./test/e2e -args -ginkgo.v -single-call-timeout=1m -ginkgo.trace -ginkgo.randomizeAllSpecs
+managed-e2e:
+	./scripts/deploy-kubefed-latest.sh
+	go test -v ./test/e2e -args -kubeconfig ~/.kube/config -ginkgo.v -single-call-timeout=1m -ginkgo.trace -ginkgo.randomizeAllSpecs
+.PHONY: managed-e2e

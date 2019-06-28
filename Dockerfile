@@ -9,7 +9,7 @@ RUN yum update -y
 RUN yum install -y make git
 
 ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+ENV PATH $GOPATH/bin:/usr/local/go/bin:/usr/local/bin:$PATH
 
 WORKDIR /go/src/sigs.k8s.io/kubefed
 
