@@ -16,7 +16,8 @@ vet:
 
 managed-e2e: populate-kubefed-gopath
 	cd /go/src/sigs.k8s.io/kubefed
-	./scripts/downloads-binaries.sh
+	ls -ltr
+	bash -x ./scripts/downloads-binaries.sh
 	TEST_ASSET_PATH="/go/src/sigs.k8s.io/kubefed/bin" \
 	TEST_ASSET_ETCD="/go/src/sigs.k8s.io/kubefed/bin/etcd" \
 	TEST_ASSET_KUBE_APISERVER="/go/src/sigs.k8s.io/kubefed/bin/kube-apiserver" \

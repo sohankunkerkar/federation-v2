@@ -13,11 +13,11 @@ kubefed_src="${gopath_dir}/src/${kubefed_gp}"
 
 echo "Populating kubefed gopath at ${kubefed_src}"
 mkdir -p $kubefed_src
-cp  Makefile $kubefed_src/Makefile
-cp -r pkg $kubefed_src/pkg
-cp -r cmd $kubefed_src/cmd
-cp -r test $kubefed_src/test
-cp -r hack $kubefed_src/hack
-cp -r scripts $kubefed_src/scripts
-cp -r config $kubefed_src/config
-cp -r vendor $kubefed_src/vendor
+rsync Makefile $kubefed_src/Makefile
+rsync -r pkg $kubefed_src/pkg
+rsync -r cmd $kubefed_src/cmd
+rsync -r test $kubefed_src/test
+rsync -r hack $kubefed_src/hack
+rsync -r scripts $kubefed_src/scripts
+rsync -r config $kubefed_src/config
+rsync -r vendor $kubefed_src/vendor
