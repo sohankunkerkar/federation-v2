@@ -56,3 +56,13 @@ func RemoveManagedLabel(obj *unstructured.Unstructured) {
 	delete(labels, ManagedByKubeFedLabelKey)
 	obj.SetLabels(labels)
 }
+
+//CheckManagedLabel checks if the given object has the
+//managed:false label
+func CheckManagedLabel(obj *unstructured.Unstructured) bool {
+	labels := obj.GetLabels()
+	if labels == nil {
+		return false
+	}
+	return labels[ManagedByKubeFedLabelKey] == "false"
+}

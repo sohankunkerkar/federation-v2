@@ -161,7 +161,7 @@ func (d *managedDispatcherImpl) Create(clusterName string) {
 			return d.recordOperationError(status.RetrievalFailed, clusterName, op, wrappedErr)
 		}
 
-		if d.skipAdoptingResources && !d.fedResource.IsNamespaceInHostCluster(clusterObj) {
+		if d.skipAdoptingResources && !d.fedResource.IsNamespaceInHostCluster(clusterObj) && util.CheckManagedLabel(obj) {
 			_ = d.recordOperationError(status.AlreadyExists, clusterName, op, errors.Errorf("Resource pre-exist in cluster"))
 			return util.StatusAllOK
 		}
