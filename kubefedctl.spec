@@ -46,7 +46,7 @@
 
 %global package_name kubefed-client
 %global product_name Kubefed Client
-%global import_path github\.com\/openshift\/kubefed # GO_PACKAGE
+%global import_path github.com/openshift/kubefed # GO_PACKAGE
 
 Name:           %{package_name}
 Version:        %{version}
@@ -71,11 +71,20 @@ ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 This package provides the kubefed-client binary (kubefedctl) to interact with the kubefed controller
 
 %prep
-%if 0%{do_prep}
-%setup -q
-%endif
+GOPATH=$RPM_BUILD_DIR/go
+rm -rf $GOPATH
+mkdir -p $GOPATH/src/sigs.k8s.io/kubefed
+cd $RPM_BUILD_DIR
+rm -rf kubefed-client*
+tar -xzmf %{_sourcedir}/kubefed-client*
+cd kubefed-client*
+DIR=$RPM_BUILD_DIR/kubefed-client*
+mv $DIR/*  $GOPATH/src/sigs.k8s.io/kubefed/
+ln -s $GOPATH/src/sigs.k8s.io/kubefed/kubefed $DIR
 
 %build
+export GOPATH=$RPM_BUILD_DIR/go
+cd $GOPATH/src/sigs.k8s.io/kubefed
 %if 0%{do_build}
 %if 0%{make_redistributable}
 # Create Binaries for all internally defined arches
@@ -102,16 +111,9 @@ OS_ONLY_BUILD_PLATFORMS="${BUILD_PLATFORM}" %{os_git_vars} make -f openshift/Mak
 %endif
 
 %install
-
-PLATFORM="$(go env GOHOSTOS)/$(go env GOHOSTARCH)"
 install -d %{buildroot}%{_bindir}
 
-# Install linux components
-for bin in 'kubefedctl'
-do
-    echo "+++ INSTALLING ${bin}"
-    install -p -m 755 _output/local/bin/${PLATFORM}/${bin} %{buildroot}%{_bindir}/${bin}
-done
+install -p -m 755 $RPM_BUILD_DIR/go/src/sigs.k8s.io/kubefed/bin/kubefedctl %{buildroot}%{_bindir}/kubefedctl
 
 # EXAMPLE: Install tests
 # install -d %{buildroot}%{_libexecdir}/%{name}
@@ -121,8 +123,8 @@ done
 # install -p -m 0755 _output/local/bin/${PLATFORM}/sdn-cni-plugin %{buildroot}/opt/cni/bin/openshift-sdn
 
 %files
-%doc README.md
-%license LICENSE
+%doc $RPM_BUILD_DIR/go/src/sigs.k8s.io/kubefed/README.md
+%license $RPM_BUILD_DIR/go/src/sigs.k8s.io/kubefed/LICENSE
 %{_bindir}/kubefedctl
 # EXAMPLE: Managing configuration
 # %defattr(-,root,root,0700)
